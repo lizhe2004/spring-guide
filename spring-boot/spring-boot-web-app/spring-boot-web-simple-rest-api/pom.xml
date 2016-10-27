@@ -1,0 +1,80 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                      http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!--
+    Maven用户可以继承spring-boot-starter-parent项目来获取一些默认设置，包括
+    1. 使用Java 1.6 作为默认的编译level
+    2. 使用UTF-8作为源码的编码格式
+    3. 在依赖管理的部分，允许你为那些常见的依赖项省略 <version>标签，他们的版本号继承自spring-boot-dependencies的POM文件。
+    4. 合适的resource filtering
+    5. 合适的插件配置（(exec plugin, surefire, Git commit ID, shade）
+    6. 为application.properties 和application.yml（包括application-foo.properties和application-foo.yml这样的针对特定的profile的配置文件）提供合适的resource filtering
+参见链接 http://docs.spring.io/spring-boot/docs/current/reference/html/using-boot-build-systems.html
+-->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>1.4.1.RELEASE</version>
+    </parent>
+    <groupId>net.huahuaxia.app.spring</groupId>
+    <artifactId>spring-boot-web-simple-rest-api</artifactId>
+    <packaging>jar</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <name>Spring boot web rest api</name>
+    <url>http://github.com/lizhe2004/spring-guideg</url>
+
+
+    <!--
+    spring-boot-starter-parent 为了保持kava兼容性，所以选择了比较保守的版本，如果你想使用新的java版本，需要配置java.version 属性
+    -->
+    <properties>
+        <java.version>1.8</java.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <!--Spring boot通过actuator模块提供了许多用于web服务管理的service，其中包括健康检查、审计、beans等
+       env、 health、beans、info、metrics、trace、configprops和dump.-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.jayway.jsonpath</groupId>
+            <artifactId>json-path</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+
+    <build>
+        <plugins>
+
+            <!--
+            Spring Boot Maven 插件提供了很多实用的功能
+            1. 会将classpath中的jar包收集起来打包成一个可以运行的“uber jar”包，这样更加便于执行和传输你的服务。
+            2. 会查找 public static void main()方法来标记runnable class
+            3. 提供了内建的依赖解析器，会设置版本号来与Spring Boot dependencies保持一致，你可以根据你的需要来覆盖任意的版本号，但是默认是使用Boot选择的版本集合
+            -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+
+
+</project>
