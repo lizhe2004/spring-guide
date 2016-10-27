@@ -20,7 +20,7 @@
         <version>1.4.1.RELEASE</version>
     </parent>
     <groupId>net.huahuaxia.app.spring</groupId>
-    <artifactId>spring-boot-app</artifactId>
+    <artifactId>spring-boot-cli-app</artifactId>
     <packaging>jar</packaging>
     <version>1.0-SNAPSHOT</version>
     <name>Spring boot 脚手架</name>
